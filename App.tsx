@@ -1,28 +1,39 @@
-/**
- * Sample React Native App
- * https://github.com/facebook/react-native
- *
- * @format
- */
+import React from 'react';
+import { NavigationContainer } from '@react-navigation/native';
+import { createNativeStackNavigator } from '@react-navigation/native-stack';
 
-import { NewAppScreen } from '@react-native/new-app-screen';
-import { StatusBar, StyleSheet, useColorScheme, View } from 'react-native';
 
-function App() {
-  const isDarkMode = useColorScheme() === 'dark';
+//import all screens from paths
+import LoginScreen from './scripts/loginScreen';
+import HomeScreen from './scripts/homeScreen';
+import TripDetailsScreen from './scripts/tripDetailsScreen';
+import PlanTripScreen from './scripts/planTripScreen';
+import ProfileScreen from './scripts/profileScreen';
+import ContributorsScreen from './scripts/contributorsScreen';
 
+
+export type RootStackParamList = {
+  Login : undefined;
+  Home: undefined;
+  TripDetails: undefined;
+  PlanTrip: undefined;
+  Profile: undefined;
+  Contributors: undefined;
+};
+
+const Stack = createNativeStackNavigator<RootStackParamList>();
+
+export default function App() {
   return (
-    <View style={styles.container}>
-      <StatusBar barStyle={isDarkMode ? 'light-content' : 'dark-content'} />
-      <NewAppScreen templateFileName="App.tsx" />
-    </View>
+    <NavigationContainer>
+      <Stack.Navigator initialRouteName="Login">
+        <Stack.Screen name="Login" component={LoginScreen} />
+        <Stack.Screen name="Home" component={HomeScreen} />
+        <Stack.Screen name="TripDetails" component={TripDetailsScreen} />
+        <Stack.Screen name="PlanTrip" component={PlanTripScreen} />
+        <Stack.Screen name="Profile" component={ProfileScreen} />
+        <Stack.Screen name="Contributors" component={ContributorsScreen} />
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-  },
-});
-
-export default App;
