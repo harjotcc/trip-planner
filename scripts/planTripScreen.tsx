@@ -3,6 +3,7 @@ import { View, Text, TextInput, Button, StyleSheet, ScrollView, Alert } from 're
 import { saveTripData } from './data/appData'; 
 
 
+//react hooks with usestate to manage form state 
 const PlanTripScreen = ({ navigation }: any) => {
   const [source, setSource] = useState('');
   const [destination, setDestination] = useState('');
@@ -13,6 +14,9 @@ const PlanTripScreen = ({ navigation }: any) => {
   const [members, setMembers] = useState('');
 
   const handleSubmit = () => {
+
+
+    //validation checks , if any field invalid , return alert
     if (!source.trim()) {
       Alert.alert('Error', 'Please enter Source.');
       return;
@@ -34,6 +38,7 @@ const PlanTripScreen = ({ navigation }: any) => {
       return;
     }
 
+    //save data in data/AppaData.ts file
     saveTripData({
       source,
       destination,
@@ -48,7 +53,9 @@ const PlanTripScreen = ({ navigation }: any) => {
 
 
   return (
+    //added the scroll view to make the form scrollable becase the data is longer than the screen size
     <ScrollView contentContainerStyle={styles.scrollContainer}>
+     
       <View style={styles.container}>
         <Text style={styles.title}>Plan Your Trip</Text>
 
@@ -119,12 +126,15 @@ const PlanTripScreen = ({ navigation }: any) => {
           />
         </View>
 
+          {/* Submit button to handle form submission */}
         <Button title="Submit" onPress={handleSubmit} />
+      
       </View>
     </ScrollView>
   );
 };
 
+//stylesheet for the PlanTripScreen component
 const styles = StyleSheet.create({
   scrollContainer: {
     flexGrow: 1,

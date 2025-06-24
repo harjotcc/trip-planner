@@ -1,17 +1,30 @@
 import React from 'react';
 import { View, Text, StyleSheet, Image } from 'react-native';
+import { ImageSourcePropType } from 'react-native';
 
-const contributors = [
+//type for contributor
+type Contributor =
+{
+  name: string;
+  image: ImageSourcePropType;
+}
+
+//array of contributor objects with data
+const contributors : Contributor[] = [
   {
     name: 'Gagandeep Singh',
     image: require('../images/gagan.png'),
   },
     
   {
+    name: 'Manjeet Singh',
+    image: require('../images/manjeet.png'),
+  },
+  {
     name: 'Harjot Singh',
     image: require('../images/harjot.png'),
   },
-{
+  {
     name: 'Mehak Kakkar',
     image: require('../images/mehak.png'),
   },
@@ -44,7 +57,7 @@ const styles = StyleSheet.create({
     marginBottom: 24 
   },
   contributorCard: {
-    flexDirection: 'column',
+    flexDirection: 'row',
     alignItems: 'center',
     backgroundColor: 'rgb(255,255,255)',
     borderRadius: 20,
@@ -52,14 +65,15 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.10,
     shadowRadius: 8,
     elevation: 4,
-    width: 190,
-    height: 170,
+    width: 350,
+    height: 120,
     padding: 10,
     margin: 10,
+    gap : 20,
   },
   avatar: {
-    width: 120,
-    height: 120,
+    width: 100,
+    height: 100,
     borderRadius: 50,
     marginBottom: 5,
     backgroundColor: 'rgb(227,227,227)',

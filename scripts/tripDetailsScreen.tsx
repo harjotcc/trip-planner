@@ -1,13 +1,18 @@
 import React from 'react';
 import { View, Text, StyleSheet } from 'react-native';
+
+// Importing the function to get trip data from appData.ts file
 import { getTripData } from './data/appData';
 
 const TripDetailsScreen = () => {
+
+  //get last saved trip data from appData.ts file
   const trip = getTripData();
 
   return (
     <View style={styles.container}>
       <Text style={styles.label}>Trip Details</Text>
+      {/* if trip data null, just say no trip planned, other wise show data  */}
       {trip ? (
         <View style={styles.detailsBox}>
           <Text style={styles.detail}><Text style={styles.field}>Source</Text> {trip.source}</Text>

@@ -11,7 +11,7 @@ import PlanTripScreen from './scripts/planTripScreen';
 import ProfileScreen from './scripts/profileScreen';
 import ContributorsScreen from './scripts/contributorsScreen';
 
-
+//typ definiation for the navigation stack
 export type RootStackParamList = {
   Login : undefined;
   Home: undefined;
@@ -21,10 +21,13 @@ export type RootStackParamList = {
   Contributors: undefined;
 };
 
+//initialize the stack navigator with the defined types
 const Stack = createNativeStackNavigator<RootStackParamList>();
 
 export default function App() {
   return (
+
+    //Adding screesn in the stack navigator
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Login">
         <Stack.Screen name="Login" component={LoginScreen} />

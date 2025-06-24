@@ -6,6 +6,7 @@ const profilePic = require('../images/image.png');
 const ProfileScreen = () => {
   const username = getUsername();
 
+  //simple screen with image and username that we got from login and saved in appData.ts file
   return (
     <View style={styles.container}>
       <View style={styles.profileBox}>
